@@ -163,6 +163,20 @@ namespace Microsoft.Xna.Framework.Media
 			
 			return Equals(obj as Song);  
 		}
+
+        public static Song FromUri(string name, Uri uri)
+        {
+            if (!uri.IsAbsoluteUri)
+            {
+                var song = new Song(uri.OriginalString);
+                song._name = name;
+                return song;
+            }
+            else
+            {
+                throw new NotImplementedException("Absolute paths are not implemented.");
+            }
+        }
 		
 		public static bool operator ==(Song song1, Song song2)
 		{
