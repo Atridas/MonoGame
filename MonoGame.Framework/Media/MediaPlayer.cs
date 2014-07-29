@@ -422,6 +422,7 @@ namespace Microsoft.Xna.Framework.Media
             if (State != MediaState.Stopped)
             {
                 _session.Stop();
+                _session.Close();
                 _volumeController.Dispose();
                 _clock.Dispose();
             }
@@ -543,6 +544,7 @@ namespace Microsoft.Xna.Framework.Media
 #elif WINDOWS_MEDIA_SESSION
             _session.ClearTopologies();
             _session.Stop();
+            _session.Close();
             _volumeController.Dispose();
             _volumeController = null;
             _clock.Dispose();
